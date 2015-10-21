@@ -1,11 +1,7 @@
 class Url < ActiveRecord::Base
+  before_create :shorten
+
   def shorten
-    Url.create()
-
-    alpha = (0...20).map { ("a".."z").to_a[rand(26)]}.join
-    p "http://"+alpha
+    self.shortened_url = (0...20).map { ("a".."z").to_a[rand(26)]}.join
   end
-
-
-	# This is Sinatra! Remember to create a migration!
 end
